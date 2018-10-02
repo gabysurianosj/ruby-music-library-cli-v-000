@@ -1,15 +1,8 @@
 module Concerns::Findable
-  module ClassMethods
-    def find_by_name(name)
-      self.all.detect { |x| x.name == name }
+   def find_by_name(name)
+    self.all.detect {|s| s.name == name}
     end
-
-    def find_or_create_by_name(name)
-      if find_by_name(name).nil?
-        self.create(name)
-      else
-        find_by_name(name)
-      end
+   def find_or_create_by_name(name)
+    find_by_name(name) || create(name)
     end
-  end
 end
